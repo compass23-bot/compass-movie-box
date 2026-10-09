@@ -1,7 +1,22 @@
+
 {
-  "name":"compass-movie-box",
-  "version":"1.0.0",
-  "private":true,
-  "scripts":{"start":"node server.js","dev":"node --watch server.js"},
-  "dependencies":{"bcryptjs":"^2.4.3","better-sqlite3":"^11.10.0","cookie-parser":"^1.4.7","dotenv":"^16.6.1","express":"^5.1.0","jsonwebtoken":"^9.0.2","multer":"^2.0.2"}
+  "name": "compass-movie-box",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.10.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2"
+  }
 }
