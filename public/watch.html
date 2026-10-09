@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Watch Movie - Compass Movie Box</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #080808;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #e50914;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: #e50914;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        video {
+            width: 100%;
+            max-height: 600px;
+            background: black;
+            border-radius: 10px;
+        }
+
+        .movie-info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #151515;
+            border-radius: 10px;
+        }
+
+        .movie-info h2 {
+            margin-top: 0;
+            color: #e50914;
+        }
+
+        .movie-meta {
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: #ff4444;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🎬 Compass Movie Box</h1>
+    </header>
+
+    <div class="container">
+
+        <a href="/" class="back-button">
+            ← Back to Movies
+        </a>
+
+        <div id="movieContainer">
+            <p>Loading movie...</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        async function loadMovie() {
+
+            const container = document.getElementById("movieContainer");
+
+            const params = new URLSearchParams(window.location.search);
+
+            const movieId = params.get("id");
+
+            if (!movieId) {
+
+                container.innerHTML =
+                    '<p class="error">Movie ID was not provided.</p>';
+
+                return;
+            }
+
+            try {
+
+                const response = await fetch("/api/movies");
+
+                const movies = await response.json();
+
+                const movie = movies.find(
+                    item => String(item.id) === String(movieId)
+                );
+
+                if (!movie) {
+
+                    container.innerHTML =
+                        '<p class="error">Movie not found.</p>';
+
+                    return;
+                }
+
+                container.innerHTML = `
+
+                    <video controls poster="${movie.poster_url}">
+
+                        <source
+                            src="${movie.video_url}"
+                            type="video/mp4">
+
+                        Your browser does not support video playback.
+
+                    </video>
+
+                    <div class="movie-info">
+
+                        <h2>${movie.title}</h2>
+
+                        <div class="movie-meta">
+
+                            ${movie.genre || "Other"}
+
+                            ${movie.year ? " • " + movie.year : ""}
+
+                        </div>
+
+                        <p>
+                            ${movie.description || "No description available."}
+                        </p>
+
+                    </div>
+
+                `;
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML =
+                    '<p class="error">Unable to load movie.</p>';
+            }
+        }
+
+        loadMovie();
+
+    </script>
+
+</body>
+
+</html>

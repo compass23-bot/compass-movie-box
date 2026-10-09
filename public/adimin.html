@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compass Movie Box - Admin Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 240px;
+            height: 100vh;
+            background: #111;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #e50914;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 10px;
+            border: none;
+            background: #222;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .sidebar button:hover {
+            background: #e50914;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .section {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .section button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            background: #e50914;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                width: 180px;
+            }
+
+            .main {
+                margin-left: 180px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>COMPASS</h2>
+
+        <button onclick="showDashboard()">🏠 Dashboard</button>
+
+        <button onclick="showMovies()">🎬 Movies</button>
+
+        <button onclick="showBlogs()">📰 Blogs / News</button>
+
+        <button onclick="showUsers()">👥 Users</button>
+
+        <button onclick="logout()">🚪 Logout</button>
+
+    </div>
+
+
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome to Compass Movie Box Administration</p>
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Movies</h3>
+                <div class="number" id="movieCount">0</div>
+            </div>
+
+            <div class="card">
+                <h3>Blog Posts</h3>
+                <div class="number" id="blogCount">0</div>
+            </div>
+
+            <div class="card">
+                <h3>Users</h3>
+                <div class="number" id="userCount">0</div>
+            </div>
+
+        </div>
+
+
+        <div class="section" id="content">
+
+            <h2>Welcome, Administrator 👋</h2>
+
+            <p>
+                Use the menu on the left to manage movies,
+                blogs, news and users.
+            </p>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+function showDashboard() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>Dashboard</h2>
+        <p>Welcome to the Compass Movie Box administration panel.</p>
+    `;
+
+}
+
+
+function showMovies() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>🎬 Movie Management</h2>
+
+        <p>Here you will be able to add and manage movies.</p>
+
+        <button onclick="addMovie()">
+            + Add Movie
+        </button>
+    `;
+
+}
+
+
+function showBlogs() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>📰 Blog / News Management</h2>
+
+        <p>Here you will be able to publish news and blog posts.</p>
+
+        <button onclick="addBlog()">
+            + Add Blog Post
+        </button>
+    `;
+
+}
+
+
+function showUsers() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>👥 User Management</h2>
+
+        <p>User management will appear here.</p>
+    `;
+
+}
+
+
+<script>
+
+function showDashboard() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>Dashboard</h2>
+        <p>Welcome to the Compass Movie Box administration panel.</p>
+    `;
+
+}
+
+
+function showMovies() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>🎬 Movie Management</h2>
+
+        <p>Manage your published movies below.</p>
+
+        <button onclick="addMovie()">
+            + Add Movie
+        </button>
+
+        <button onclick="manageMovies()">
+            📋 Manage Movies
+        </button>
+
+        <div id="movieManagement"></div>
+    `;
+
+}
+
+
+function showBlogs() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>📰 Blog / News Management</h2>
+
+        <p>Here you will be able to publish news and blog posts.</p>
+
+        <button onclick="addBlog()">
+            + Add Blog Post
+        </button>
+    `;
+
+}
+
+
+function showUsers() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>👥 User Management</h2>
+
+        <p>User management will appear here.</p>
+    `;
+
+}
+
+
+function addMovie() {
+
+    document.getElementById("content").innerHTML = `
+        <h2>🎬 Add New Movie</h2>
+
+        <form id="movieForm" enctype="multipart/form-data">
+
+            <label>Movie Title</label><br>
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter movie title"
+                required
+            >
+
+            <br><br>
+
+            <label>Description</label><br>
+
+            <textarea
+                name="description"
+                rows="6"
+                placeholder="Enter movie description"
+            ></textarea>
+
+            <br><br>
+
+            <label>Genre</label><br>
+
+            <select name="genre">
+
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Animation">Animation</option>
+                <option value="Documentary">Documentary</option>
+                <option value="Other" selected>Other</option>
+
+            </select>
+
+            <br><br>
+
+            <label>Year</label><br>
+
+            <input
+                type="number"
+                name="year"
+                placeholder="2026"
+                min="1900"
+                max="2100"
+            >
+
+            <br><br>
+
+            <label>Movie Poster</label><br>
+
+            <input
+                type="file"
+                name="poster"
+                accept="image/jpeg,image/png,image/webp"
+                required
+            >
+
+            <br><br>
+
+            <label>Movie Video</label><br>
+
+            <input
+                type="file"
+                name="video"
+                accept="video/mp4,video/webm,video/ogg"
+                required
+            >
+
+            <br><br>
+
+            <button type="submit">
+                🎬 Publish Movie
+            </button>
+
+        </form>
+
+        <p id="movieMessage"></p>
+    `;
+
+
+    document
+        .getElementById("movieForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const form = event.target;
+
+            const formData = new FormData(form);
+
+            const message =
+                document.getElementById("movieMessage");
+
+            message.textContent =
+                "⏳ Uploading movie...";
+
+
+            try {
+
+                const response =
+                    await fetch("/api/admin/movies", {
+                        method: "POST",
+                        body: formData
+                    });
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.error ||
+                        "Failed to publish movie."
+                    );
+
+                }
+
+
+                message.textContent =
+                    "✅ Movie published successfully!";
+
+
+                form.reset();
+
+
+                loadMovieCount();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "❌ " + error.message;
+
+            }
+
+        });
+
+}
+
+
+async function loadMovieCount() {
+
+    try {
+
+        const response =
+            await fetch("/api/movies");
+
+        const movies =
+            await response.json();
+
+        document.getElementById("movieCount").textContent =
+            movies.length;
+
+    } catch (error) {
+
+        console.error(
+            "Could not load movie count:",
+            error
+        );
+
+    }
+
+}
+
+
+async function manageMovies() {
+
+    const area =
+        document.getElementById("movieManagement");
+
+    area.innerHTML =
+        "<p>⏳ Loading movies...</p>";
+
+
+    try {
+
+        const response =
+            await fetch("/api/movies");
+
+        const movies =
+            await response.json();
+
+
+        if (movies.length === 0) {
+
+            area.innerHTML =
+                "<p>No movies published yet.</p>";
+
+            return;
+        }
+
+
+        area.innerHTML = `
+            <h3>📋 Published Movies</h3>
+        `;
+
+
+        movies.forEach(movie => {
+
+            const movieItem =
+                document.createElement("div");
+
+            movieItem.style.margin = "15px 0";
+            movieItem.style.padding = "15px";
+            movieItem.style.background = "#222";
+            movieItem.style.color = "white";
+            movieItem.style.borderRadius = "8px";
+
+
+            movieItem.innerHTML = `
+
+                <h3>${movie.title}</h3>
+
+                <p>
+                    ${movie.genre || "Other"}
+                    ${movie.year ? " • " + movie.year : ""}
+                 </p>
+                    <button onclick="editMovie(${movie.id})">
+    ✏️ Edit
+</button>
+
+<button onclick="deleteMovie(${movie.id})">
+    🗑️ Delete
+</button>
+
+            `;
+
+
+            area.appendChild(movieItem);
+
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        area.innerHTML =
+            "<p>Unable to load movies.</p>";
+
+    }
+
+}
+
+
+async function deleteMovie(movieId) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this movie?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/admin/movies/" + movieId,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Failed to delete movie."
+            );
+
+        }
+
+
+        alert("✅ Movie deleted successfully!");
+
+
+        loadMovieCount();
+
+        manageMovies();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ " + error.message
+        );
+
+    }
+
+}
+
+
+loadMovieCount();
+
+</script>
+
+</body>
+</html>
+
+
+
