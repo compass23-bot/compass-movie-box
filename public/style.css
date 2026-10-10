@@ -1,10 +1,2088 @@
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;background:#0b0d12;color:#f4f5f7}a{color:inherit;text-decoration:none}header{position:sticky;top:0;z-index:10;background:#11141bd9;backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:16px 6%;border-bottom:1px solid #242936}.brand{font-weight:800;font-size:21px}nav{display:flex;gap:18px;align-items:center}nav a:hover{color:#ffcc00}.hero{min-height:70vh;display:grid;place-items:center;padding:70px 8%;background:radial-gradient(circle at 70% 20%,#333b55 0,#0b0d12 48%)}.hero>div{max-width:850px}.eyebrow{letter-spacing:3px;color:#ffcc00;font-weight:700}.hero h1{font-size:clamp(44px,7vw,82px);line-height:.95;margin:15px 0}.hero p:not(.eyebrow){font-size:19px;line-height:1.7;color:#bfc5d1;max-width:680px}.btn,button{border:0;border-radius:8px;padding:12px 18px;background:#ffcc00;color:#111;font-weight:800;cursor:pointer}.section{padding:70px 7%}.section-head{display:flex;justify-content:space-between;align-items:center;gap:20px}.section h2{font-size:36px}.section-head input{max-width:360px}.dark{background:#12151c}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:#171b24;border:1px solid #272d39;border-radius:14px;padding:22px}.movie-card{overflow:hidden;padding:0}.poster{height:280px;background:#202633;display:grid;place-items:center;font-size:55px;background-size:cover;background-position:center}.movie-body{padding:18px}.movie-body p{color:#bfc5d1;line-height:1.5}.section input,.section textarea,.auth input{width:100%;padding:13px;margin:7px 0;background:#0f1218;color:white;border:1px solid #303746;border-radius:7px}.auth-grid,.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.stats{display:flex;gap:15px;margin-bottom:22px}.stat{background:#171b24;border:1px solid #272d39;border-radius:12px;padding:18px;min-width:130px}.stat strong{display:block;font-size:30px}.hidden{display:none!important}label{display:block;color:#bfc5d1;margin:8px 0}.user-row{padding:10px 0;border-bottom:1px solid #2a303b;display:flex;justify-content:space-between;gap:10px}footer{text-align:center;padding:30px;color:#888;border-top:1px solid #242936}@media(max-width:800px){header{flex-direction:column;gap:12px}.grid,.auth-grid,.admin-grid{grid-template-columns:1fr}.section-head{align-items:stretch;flex-direction:column}.stats{flex-wrap:wrap}}
-.watch-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background: #e50914;
-    color: white;
+```css
+/* ==========================================
+   COMPASS MOVIE BOX — RED CINEMA EDITION
+   Premium movie streaming inspired design
+========================================== */
+
+:root {
+    --bg: #080808;
+    --surface: #141414;
+    --surface-light: #202020;
+    --border: #303030;
+    --red: #e50914;
+    --red-light: #ff2633;
+    --text: #ffffff;
+    --muted: #b3b3b3;
+    --radius: 12px;
+    --shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
     text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--red);
+    color: white;
+}
+
+/* ================ HEADER ================ */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 17px 6%;
+    background: rgba(8, 8, 8, 0.96);
+    border-bottom: 1px solid rgba(229, 9, 20, 0.35);
+    backdrop-filter: blur(16px);
+}
+
+.brand {
+    color: var(--red);
+    font-size: clamp(21px, 2.5vw, 30px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    white-space: nowrap;
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.25);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 21px;
+}
+
+nav a {
+    color: #eeeeee;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--red-light);
+}
+
+/* ================ HERO BANNER ================ */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 76vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 8%;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.98) 0%,
+            rgba(0, 0, 0, 0.83) 45%,
+            rgba(0, 0, 0, 0.35) 100%
+        ),
+        linear-gradient(
+            0deg,
+            var(--bg) 0%,
+            transparent 35%
+        ),
+        url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.hero > div {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+}
+
+.hero-overlay {
+    width: 100%;
+}
+
+.banner-content {
+    max-width: 850px;
+}
+
+.eyebrow {
+    color: var(--red-light);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    max-width: 900px;
+    margin: 18px 0;
+    font-size: clamp(42px, 7vw, 82px);
+    font-weight: 900;
+    line-height: 1.03;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--red);
+    text-shadow: 0 0 30px rgba(229, 9, 20, 0.25);
+}
+
+.hero p:not(.eyebrow) {
+    max-width: 650px;
+    color: #d1d1d1;
+    font-size: clamp(15px, 2vw, 19px);
+    line-height: 1.8;
+}
+
+.hero .banner-tagline {
+    margin-top: 28px;
+    color: #aaaaaa;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+/* ================ BUTTONS ================ */
+
+.btn,
+button {
+    display: inline-block;
+    padding: 12px 20px;
+    color: white;
+    background: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 7px;
+    font-weight: 800;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn:hover,
+button:hover {
+    background: var(--red-light);
+    border-color: var(--red-light);
+    box-shadow: 0 7px 24px rgba(229, 9, 20, 0.25);
+    transform: translateY(-2px);
+}
+
+.watch-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 11px 17px;
+    color: white;
+    background: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 7px;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+.watch-button:hover {
+    background: #b80710;
+    transform: translateY(-2px);
+}
+
+.banner-actions .watch-button {
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.banner-actions .watch-button:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.btn:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* ================ SECTIONS ================ */
+
+.section {
+    padding: 65px 7%;
+}
+
+.section h2 {
+    margin: 0 0 25px;
+    font-size: clamp(25px, 4vw, 36px);
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+.section h2::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    margin-top: 12px;
+    background: var(--red);
     border-radius: 5px;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.section-head h2 {
+    margin-bottom: 0;
+}
+
+.dark {
+    background: #101010;
+}
+
+.section p {
+    color: var(--muted);
+}
+
+
+/* ================ MOVIE GRID ================ */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card,
+.movie-card {
+    min-width: 0;
+    overflow: hidden;
+    background: linear-gradient(160deg, #1b1b1b, #0d0d0d);
+    border: 1px solid #303030;
+    border-radius: 14px;
+    transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.card {
+    padding: 22px;
+}
+
+.card:hover,
+.movie-card:hover {
+    border-color: var(--red);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(229, 9, 20, .18);
+}
+
+.movie-card {
+    padding: 0;
+}
+
+.movie-poster,
+.poster {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    background: #202020;
+}
+
+.movie-poster img,
+.poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .45s ease;
+}
+
+.movie-card:hover .movie-poster img,
+.movie-card:hover .poster img {
+    transform: scale(1.06);
+}
+
+.movie-genre {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 5px 10px;
+    color: white;
+    background: rgba(229, 9, 20, .95);
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.movie-info,
+.movie-body {
+    min-width: 0;
+    padding: 18px;
+}
+
+.movie-info h3,
+.movie-body h3,
+.movie-body h4 {
+    margin: 0 0 8px;
+    color: white;
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+.movie-info p,
+.movie-body p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.movie-meta {
+    font-size: 12px !important;
+}
+
+.movie-description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.movie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.movie-actions .watch-button,
+.movie-actions .download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 0;
+    padding: 10px 13px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.download-button {
+    color: white;
+    background: #252525;
+    border: 1px solid #454545;
+}
+
+.download-button:hover {
+    background: #363636;
+    border-color: var(--red);
+}
+
+.poster-placeholder {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    color: white;
+    background: radial-gradient(ellipse at top, #451014, #171717 70%);
+    text-align: center;
+}
+
+.poster-placeholder span {
+    font-size: 42px;
+}
+
+/* ================ END MOVIE GRID ================ */
+
+
+/* ================ SEARCH AND FILTERS ================ */
+
+.movie-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.movie-filters input,
+.movie-filters select {
+    flex: 1 1 220px;
+}
+
+.section input,
+.section textarea,
+.section select,
+.auth input {
+    width: 100%;
+    min-width: 0;
+    margin: 7px 0;
+    padding: 13px 14px;
+    color: white;
+    background: #111111;
+    border: 1px solid #393939;
+    border-radius: 8px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.section input:focus,
+.section textarea:focus,
+.section select:focus,
+.auth input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.13);
+    outline: none;
+}
+
+
+.section input::placeholder,
+.section textarea::placeholder,
+.auth input::placeholder {
+    color: #999999;
+}
+
+.section textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+label {
+    display: block;
+    margin: 8px 0;
+    color: #dddddd;
+    font-size: 14px;
+}
+
+/* ================ LOGIN AND ADMIN ================ */
+
+.auth-grid,
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.auth,
+.admin-grid > *,
+.auth-grid > * {
+    min-width: 0;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.stat {
+    flex: 1 1 130px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.stat strong {
+    display: block;
+    color: var(--red-light);
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.user-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+#admin {
+    border-top: 1px solid #262626;
+}
+
+#admin .card {
+    margin-bottom: 18px;
+}
+
+#movieMsg,
+#loginMsg,
+#registerMsg {
+    overflow-wrap: anywhere;
+}
+
+/* ================ VIDEO PLAYER ================ */
+
+video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    background: #000;
+    border-radius: 12px;
+}
+
+/* ================ FOOTER ================ */
+
+footer {
+    padding: 32px 6%;
+    color: #999999;
+    background: #050505;
+    border-top: 1px solid #292929;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--red-light);
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* ================ RESPONSIVE DESIGN ================ */
+
+@media (min-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+        gap: 13px;
+        padding: 16px 5%;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px 18px;
+    }
+
+    .hero {
+        min-height: 58vh;
+        padding: 60px 6%;
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.96),
+                rgba(0, 0, 0, 0.65)
+            ),
+            url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80")
+            center / cover no-repeat;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .section {
+        padding: 45px 5%;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .poster {
+        height: 250px;
+    }
+.movie-poster {
+    height: 250px;
+}
+    .auth-grid,
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        gap: 10px 14px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 52vh;
+        padding: 45px 5%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .eyebrow {
+        letter-spacing: 2px;
+    }
+
+    .banner-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .banner-actions .btn,
+    .banner-actions .watch-button {
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .poster {
+        height: 340px;
+    }
+.movie-poster {
+    height: 340px;
+}
+    .movie-body {
+        padding: 16px;
+    }
+
+    .stat {
+        flex-basis: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+```
+/* ================ PREMIUM RED CINEMA BANNER ================ */
+
+.hero {
+    min-height: 76vh;
+    position: relative;
+    isolation: isolate;
+    border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 78% 42%,
+            rgba(229, 9, 20, 0.22),
+            transparent 48%
+        ),
+        linear-gradient(
+            0deg,
+            #080808 0%,
+            transparent 28%
+        );
+}
+
+.banner-content {
+    animation: cinemaIntro 0.8s ease both;
+}
+
+.hero .eyebrow {
+    display: inline-block;
+    padding: 8px 12px;
+    background: rgba(229, 9, 20, 0.12);
+    border-left: 3px solid #e50914;
+    border-radius: 3px;
+}
+
+.hero h1 span {
+    color: #e50914;
+    text-shadow: 0 0 28px rgba(229, 9, 20, 0.3);
+}
+
+.banner-actions .btn {
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.25);
+}
+
+.banner-actions .btn:hover {
+    box-shadow: 0 10px 32px rgba(229, 9, 20, 0.4);
+}
+
+@keyframes cinemaIntro {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .banner-content {
+        animation: none;
+    }
+}
+
+/* ================ END PREMIUM BANNER ================ */
+
+/* ========== COMPASS FEATURED MOVIE TRAILER ========== */
+
+.featured-trailer-section {
+    padding: 65px 7%;
+    background:
+        radial-gradient(
+            ellipse at 15% 50%,
+            rgba(229, 9, 20, 0.09),
+            transparent 55%
+        ),
+        #080808;
+}
+
+.featured-heading {
+    margin-bottom: 28px;
+}
+
+.featured-eyebrow {
+    color: #ff2633;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.featured-heading h2 {
+    color: #fff;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 900;
+    margin: 0 0 10px;
+}
+
+.featured-heading h2 span {
+    color: #e50914;
+}
+
+.featured-heading > p:last-child {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.featured-trailer-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+    gap: 0;
+    overflow: hidden;
+    background: #141414;
+    border: 1px solid #303030;
+    border-radius: 16px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+.featured-trailer-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 100%;
+    background: #000;
+}
+
+.featured-trailer-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.featured-trailer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(22px, 4vw, 42px);
+}
+
+.featured-badge {
+    display: inline-block;
+    color: #fff;
+    background: #e50914;
+    padding: 7px 11px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.featured-trailer-info h3 {
+    color: #fff;
+    font-size: clamp(25px, 3vw, 36px);
+    line-height: 1.15;
+    margin: 18px 0 12px;
+}
+
+.featured-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #c2c2c2;
+    font-size: 13px;
+}
+
+.featured-trailer-info > p {
+    color: #b8b8b8;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 20px 0 25px;
+}
+
+.featured-trailer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.featured-primary-btn,
+.featured-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 17px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.featured-primary-btn {
+    background: #e50914;
+    color: #fff;
+}
+
+.featured-primary-btn:hover {
+    background: #ff2633;
+    transform: translateY(-2px);
+}
+
+.featured-secondary-btn {
+    color: #fff;
+    border: 1px solid #484848;
+    background: #202020;
+}
+
+.featured-secondary-btn:hover {
+    background: #303030;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 800px) {
+    .featured-trailer-section {
+        padding: 45px 5%;
+    }
+
+    .featured-trailer-card {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-trailer-info {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-trailer-section {
+        padding: 35px 16px;
+    }
+
+    .featured-trailer-info {
+        padding: 20px;
+    }
+
+    .featured-trailer-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .featured-primary-btn,
+    .featured-secondary-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* ========== END FEATURED MOVIE TRAILER ========== */
+
+
+/* ==================================================
+   COMPASS MOVIE BOX — PREMIUM CINEMA GALLERY
+   Add this section at the bottom of style.css
+================================================== */
+
+:root {
+    --gallery-red: #e50914;
+    --gallery-red-bright: #ff2633;
+    --gallery-bg: #080808;
+    --gallery-card: #141414;
+    --gallery-border: #2c2c2c;
+    --gallery-muted: #b3b3b3;
+}
+
+/* Movie gallery layout */
+#movieGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* Individual movie card */
+#movieGrid .movie-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: linear-gradient(160deg, #191919, #0e0e0e);
+    border: 1px solid var(--gallery-border);
+    border-radius: 13px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#movieGrid .movie-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(229, 9, 20, 0.8);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.45),
+        0 0 18px rgba(229, 9, 20, 0.10);
+}
+
+/* Poster area */
+#movieGrid .movie-poster {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: #202020;
+    flex-shrink: 0;
+}
+
+#movieGrid .movie-poster::after {
+    content: "";
+    position: absolute;
+    inset: 45% 0 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 0, 0, 0.48)
+    );
+}
+
+#movieGrid .movie-poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.55s ease;
+}
+
+#movieGrid .movie-card:hover .movie-poster img {
+    transform: scale(1.07);
+}
+
+/* Movie genre badge */
+#movieGrid .movie-genre {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    left: 12px;
+    max-width: calc(100% - 24px);
+    padding: 6px 10px;
+    overflow: hidden;
+    color: #fff;
+    background: rgba(229, 9, 20, 0.95);
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Placeholder when no poster is uploaded */
+#movieGrid .poster-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 18px;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(229, 9, 20, 0.2),
+            transparent 65%
+        ),
+        #181818;
+}
+
+#movieGrid .poster-placeholder span {
+    font-size: 42px;
+}
+
+#movieGrid .poster-placeholder strong {
+    color: #fff;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+/* Movie information */
+#movieGrid .movie-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 17px;
+    gap: 10px;
+}
+
+#movieGrid .movie-info h3 {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    transition: color 0.25s ease;
+}
+
+#movieGrid .movie-card:hover .movie-info h3 {
+    color: var(--gallery-red-bright);
+}
+
+#movieGrid .movie-meta {
+    margin: 0;
+    color: var(--gallery-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+#movieGrid .movie-description {
+    display: -webkit-box;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: #c2c2c2;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+/* Watch and download buttons */
+#movieGrid .movie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+#movieGrid .movie-actions a,
+#movieGrid .movie-actions button {
+    display: inline-flex;
+    flex: 1 1 95px;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#movieGrid .watch-button {
+    color: #fff;
+    background: var(--gallery-red);
+}
+
+#movieGrid .watch-button:hover:not(:disabled) {
+    background: var(--gallery-red-bright);
+    transform: translateY(-2px);
+}
+
+#movieGrid .download-button {
+    color: #fff;
+    background: #252525;
+    border-color: #414141 !important;
+}
+
+#movieGrid .download-button:hover {
+    background: #333;
+    border-color: #777 !important;
+    transform: translateY(-2px);
+}
+
+#movieGrid .movie-actions button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Empty state and loading */
+#movieGrid .empty-state {
+    grid-column: 1 / -1;
+    padding: 35px 20px;
+    color: #fff;
+    text-align: center;
+    background: #141414;
+    border: 1px solid var(--gallery-border);
+    border-radius: 12px;
+}
+
+#movieGrid .empty-state h3 {
+    margin-top: 0;
+}
+
+#movieGrid .empty-state p,
+#movieGrid .loading-message {
+    color: var(--gallery-muted);
+    line-height: 1.7;
+}
+
+/* Search and genre filter */
+#search,
+#genreFilter {
+    max-width: 100%;
+    border-color: #383838;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search:focus,
+#genreFilter:focus {
+    border-color: var(--gallery-red);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.15);
+}
+
+/* Desktop and laptop */
+@media (min-width: 1400px) {
+    #movieGrid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 26px;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1399px) {
+    #movieGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 600px) and (max-width: 999px) {
+    #movieGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    #movieGrid .movie-info {
+        padding: 13px;
+    }
+
+    #movieGrid .movie-info h3 {
+        font-size: 15px;
+    }
+
+    #movieGrid .movie-actions {
+        gap: 7px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 599px) {
+    #movieGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #movieGrid .movie-card {
+        border-radius: 9px;
+    }
+
+    #movieGrid .movie-info {
+        padding: 11px;
+        gap: 8px;
+    }
+
+    #movieGrid .movie-info h3 {
+        font-size: 14px;
+    }
+
+    #movieGrid .movie-meta {
+        font-size: 11px;
+    }
+
+    #movieGrid .movie-description {
+        font-size: 12px;
+        line-height: 1.55;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+    }
+
+    #movieGrid .movie-genre {
+        top: 8px;
+        left: 8px;
+        padding: 5px 7px;
+        font-size: 9px;
+    }
+
+    #movieGrid .movie-actions {
+        flex-direction: column;
+        gap: 7px;
+        padding-top: 8px;
+    }
+
+    #movieGrid .movie-actions a,
+    #movieGrid .movie-actions button {
+        flex: auto;
+        width: 100%;
+        min-height: 37px;
+        padding: 9px 6px;
+        font-size: 11px;
+    }
+
+    #movieGrid .poster-placeholder span {
+        font-size: 30px;
+    }
+
+    #movieGrid .poster-placeholder strong {
+        font-size: 12px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #movieGrid .movie-card,
+    #movieGrid .movie-poster img,
+    #movieGrid .movie-info h3,
+    #movieGrid .movie-actions a,
+    #movieGrid .movie-actions button {
+        transition: none;
+    }
+
+    #movieGrid .movie-card:hover,
+    #movieGrid .movie-card:hover .movie-poster img {
+        transform: none;
+    }
+}
+
+/* ========== END PREMIUM CINEMA GALLERY ========== */
+/* COMPASS MOVIE BOX — GALLERY STYLE TEST */
+#movieGrid .movie-card {
+    background: #171717 !important;
+    border: 2px solid #e50914 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+#movieGrid .movie-poster {
+    overflow: hidden;
+}
+
+#movieGrid .movie-poster img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+#movieGrid .movie-card:hover .movie-poster img {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   COMPASS MOVIE BOX — PREMIUM RED GALLERY
+   ========================================= */
+
+#movieGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+    margin-top: 24px;
+}
+
+#movieGrid .movie-card {
+    min-width: 0;
+    background: linear-gradient(160deg, #1c1c1c, #0d0d0d) !important;
+    border: 1px solid #353535 !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease, border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+#movieGrid .movie-card:hover {
+    transform: translateY(-6px);
+    border-color: #e50914 !important;
+    box-shadow: 0 12px 30px rgba(229, 9, 20, 0.18);
+}
+
+#movieGrid .movie-poster {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    aspect-ratio: 2 / 3;
+}
+
+#movieGrid .movie-poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+#movieGrid .movie-card:hover .movie-poster img {
+    transform: scale(1.06);
+}
+
+#movieGrid .movie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    flex: 1;
+}
+
+#movieGrid .movie-info h3,
+#movieGrid .movie-card h3 {
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+#movieGrid .movie-genre {
+    align-self: flex-start;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(229, 9, 20, 0.13);
+    border: 1px solid rgba(229, 9, 20, 0.45);
+    color: #ff5962;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#movieGrid .movie-meta {
+    color: #bdbdbd;
+    font-size: 12px;
+}
+
+#movieGrid .movie-description {
+    color: #c7c7c7;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#movieGrid .movie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+#movieGrid .movie-actions a,
+#movieGrid .movie-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 90px;
+    min-height: 38px;
+    padding: 9px 12px;
+    border: 1px solid #e50914;
+    border-radius: 7px;
+    background: #e50914;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#movieGrid .movie-actions a:hover,
+#movieGrid .movie-actions button:hover {
+    background: #b20710;
+    border-color: #ff2934;
+}
+
+#movieGrid .movie-actions .download-button {
+    background: transparent;
+    border-color: #555;
+    color: #fff;
+}
+
+#movieGrid .movie-actions .download-button:hover {
+    background: #292929;
+    border-color: #e50914;
+}
+
+#movieGrid .poster-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    padding: 16px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* Responsive gallery */
+@media (max-width: 1100px) {
+    #movieGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 750px) {
+    #movieGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    #movieGrid .movie-info {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    #movieGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   COMPASS MOVIE BOX — FEATURED CINEMA
+   ========================================= */
+
+.featured-trailer-section {
+    margin: 38px 0 50px;
+    padding: 30px;
+    overflow: hidden;
+    border: 1px solid #292929;
+    border-radius: 18px;
+    background:
+        radial-gradient(ellipse at top right, rgba(229, 9, 20, 0.17), transparent 55%),
+        linear-gradient(145deg, #181818, #080808);
+}
+
+.featured-heading {
+    margin-bottom: 24px;
+}
+
+.featured-eyebrow {
+    margin: 0 0 8px;
+    color: #ff424b;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.featured-heading h2 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: clamp(25px, 4vw, 40px);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.featured-heading h2 span {
+    color: #e50914;
+}
+
+.featured-heading > p:last-child {
+    color: #bcbcbc;
+    line-height: 1.6;
+}
+
+#featuredMovie {
+    min-width: 0;
+    color: #fff;
+}
+
+#featuredMovie iframe,
+#featuredMovie video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+    background: #000;
+}
+
+#featuredMovie img {
+    max-width: 100%;
+}
+
+#featuredMovie a {
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#featuredMovie a:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .featured-trailer-section {
+        margin: 24px 0 32px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .featured-heading h2 {
+        font-size: 27px;
+    }
+}
+
+/* COMPASS MOVIE BOX — DISCOVERY SECTIONS */
+
+.discovery-section {
+    margin: 42px 0;
+}
+
+.discovery-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.discovery-label {
+    margin: 0 0 7px;
+    color: #ef343d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.discovery-heading h2 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: clamp(23px, 3vw, 32px);
+}
+
+.discovery-heading h2 span {
+    color: #e50914;
+}
+
+.discovery-heading p:last-child {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.discovery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.discovery-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #141414;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    transition: transform .25s ease, border-color .25s ease;
+}
+
+.discovery-card:hover {
+    transform: translateY(-4px);
+    border-color: #e50914;
+}
+
+.discovery-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: linear-gradient(145deg, #291012, #090909);
+    text-decoration: none;
+}
+
+.discovery-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s ease;
+}
+
+.discovery-card:hover .discovery-poster img {
+    transform: scale(1.05);
+}
+
+.discovery-placeholder {
+    font-size: 42px;
+}
+
+.discovery-card-info {
+    padding: 12px;
+}
+
+.discovery-card-info h3 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.discovery-card-info p {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.discovery-watch {
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+    background: #e50914;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.discovery-watch:hover {
+    background: #b20710;
+}
+
+@media (max-width: 800px) {
+    .discovery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 550px) {
+    .discovery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ==========================================
+   COMPASS MOVIE BOX — RED CINEMA UPGRADE
+   Add this at the bottom of public/style.css
+========================================== */
+
+:root {
+    --cinema-black: #080809;
+    --cinema-panel: #141416;
+    --cinema-red: #e50914;
+    --cinema-red-light: #ff2935;
+    --cinema-white: #fff;
+    --cinema-muted: #aaaab3;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 50% 0%, #30080d 0%, transparent 42%),
+        var(--cinema-black);
+    color: var(--cinema-white);
+}
+
+::selection {
+    background: var(--cinema-red);
+    color: white;
+}
+
+/* Header and navigation */
+header,
+.site-header,
+.navbar {
+    backdrop-filter: blur(16px);
+}
+
+header a,
+.site-header a,
+.navbar a {
+    transition: color 0.2s ease;
+}
+
+header a:hover,
+.site-header a:hover,
+.navbar a:hover {
+    color: var(--cinema-red-light);
+}
+
+/* Main page spacing */
+main {
+    width: 100%;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+/* Featured movie / trailer area */
+#featuredMovie {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(229, 9, 20, 0.28);
+    border-radius: 22px;
+    background:
+        linear-gradient(120deg, rgba(80, 0, 10, 0.65), transparent 65%),
+        #111113;
+    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.35);
+}
+
+#featuredMovie img {
+    max-width: 100%;
+}
+
+#featuredMovie video,
+#featuredMovie iframe {
+    display: block;
+    max-width: 100%;
+    border-radius: 14px;
+}
+
+/* Movie gallery */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 24px;
+}
+
+#movieGrid .movie-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #29292e;
+    border-radius: 15px;
+    background: linear-gradient(160deg, #1a1a1e, #101012);
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+#movieGrid .movie-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(229, 9, 20, 0.8);
+    box-shadow: 0 14px 32px rgba(229, 9, 20, 0.13);
+}
+
+#movieGrid .movie-poster {
+    overflow: hidden;
+    background: #1a080b;
+}
+
+#movieGrid .movie-poster img {
+    display: block;
+    width: 100%;
+    transition: transform 0.45s ease;
+}
+
+#movieGrid .movie-card:hover .movie-poster img {
+    transform: scale(1.045);
+}
+
+#movieGrid .movie-info {
+    padding: 15px;
+}
+
+#movieGrid .movie-info h3 {
+    color: white;
+    line-height: 1.35;
+}
+
+#movieGrid .movie-genre {
+    color: #ff5963;
+}
+
+#movieGrid .movie-meta,
+#movieGrid .movie-description {
+    color: var(--cinema-muted);
+}
+
+#movieGrid .movie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#movieGrid .watch-button,
+.discovery-watch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 14px;
+    border: 1px solid var(--cinema-red);
+    border-radius: 8px;
+    background: var(--cinema-red);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#movieGrid .watch-button:hover,
+.discovery-watch:hover {
+    transform: translateY(-2px);
+    background: #b80710;
+}
+
+#movieGrid .download-button {
+    border-radius: 8px;
+}
+
+/* Trending and Recently Added */
+.discovery-section {
+    margin-block: 44px;
+}
+
+.discovery-heading h2 {
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+.discovery-heading h2 span {
+    color: var(--cinema-red-light);
+}
+
+.discovery-label {
+    color: #ff5963;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.discovery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 20px;
+}
+
+.discovery-card {
+    overflow: hidden;
+    border: 1px solid #29292e;
+    border-radius: 14px;
+    background: var(--cinema-panel);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.discovery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cinema-red);
+}
+
+.discovery-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background: #26080b;
+}
+
+.discovery-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.discovery-card:hover .discovery-poster img {
+    transform: scale(1.05);
+}
+
+.discovery-card-info {
+    padding: 12px;
+}
+
+.discovery-card-info h3 {
+    margin: 0 0 8px;
+    color: white;
+    font-size: 0.98rem;
+}
+
+.discovery-card-info p {
+    color: var(--cinema-muted);
+    font-size: 0.82rem;
+}
+
+.discovery-watch {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    font-size: 0.85rem;
+}
+
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #ff5963;
+    outline-offset: 3px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .movie-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #movieGrid .movie-info {
+        padding: 10px;
+    }
+
+    .discovery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .discovery-section {
+        margin-block: 30px;
+    }
+
+    #featuredMovie {
+        border-radius: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }

@@ -1,9 +1,414 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compass Movie Box</title><link rel="stylesheet" href="style.css"></head><body>
-<header><a class="brand" href="#">🎬 Compass Movie Box</a><nav><a href="#movies">Movies</a><a href="#news">News</a><a href="#login">Login</a><a id="adminLink" class="hidden" href="#admin">Admin</a><button id="logoutBtn" class="hidden">Logout</button></nav></header>
-<main>
-<section class="hero"><div><p class="eyebrow">MOVIES • NEWS • ENTERTAINMENT</p><h1>Your entertainment starts here.</h1><p>Discover movies, read entertainment stories and manage your collection from one platform.</p><a class="btn" href="#movies">Browse Movies</a></div></section>
-<section id="movies" class="section"><div class="section-head"><h2>Movies</h2><input id="search" placeholder="Search movies..."></div><div id="movieGrid" class="grid"></div></section>
-<section id="news" class="section dark"><h2>Latest News & Blogs</h2><div class="grid"><article class="card"><h3>Movie Reviews</h3><p>Share reviews, ratings and recommendations with your audience.</p></article><article class="card"><h3>Entertainment News</h3><p>Publish the latest stories, interviews and entertainment updates.</p></article><article class="card"><h3>Coming Soon</h3><p>Your admin dashboard can publish new content whenever you are ready.</p></article></div></section>
-<section id="login" class="section auth"><div class="auth-grid"><form id="loginForm" class="card"><h2>Login</h2><input name="email" type="email" placeholder="Email" required><input name="password" type="password" placeholder="Password" required><button class="btn">Login</button><p id="loginMsg"></p></form><form id="registerForm" class="card"><h2>Create account</h2><input name="name" placeholder="Full name" required><input name="email" type="email" placeholder="Email" required><input name="password" type="password" placeholder="Password (6+ characters)" required><button class="btn">Register</button><p id="registerMsg"></p></form></div></section>
-<section id="admin" class="section hidden"><h2>Admin Dashboard</h2><div id="stats" class="stats"></div><div class="admin-grid"><form id="movieForm" class="card" enctype="multipart/form-data"><h3>Upload Movie</h3><input name="title" placeholder="Movie title" required><input name="genre" placeholder="Genre"><input name="year" type="number" placeholder="Year"><textarea name="description" placeholder="Description"></textarea><label>Poster image <input name="poster" type="file" accept="image/*"></label><label>Video file <input name="video" type="file" accept="video/*"></label><input name="poster_url" placeholder="Or poster URL"><input name="video_url" placeholder="Or video URL"><button class="btn">Publish Movie</button><p id="movieMsg"></p></form><div class="card"><h3>Users</h3><div id="users"></div></div></div></section>
-</main><footer>© 2026 Compass Movie Box</footer><script src="app.js"></script></body></html>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080a0f">
+    <meta name="description" content="Discover movies, entertainment news, reviews and stories on Compass Movie Box.">
+
+    <title>Compass Movie Box | Movies & Entertainment</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <a class="brand" href="#" aria-label="Compass Movie Box homepage">
+            &#127916; Compass Movie Box
+        </a>
+
+        <nav aria-label="Main navigation">
+            <a href="#movies">Movies</a>
+            <a href="#news">News & Blogs</a>
+            <a href="#login">Login</a>
+            <a id="adminLink" class="hidden" href="#admin">Admin</a>
+            <button id="logoutBtn" class="hidden" type="button">
+                Logout
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+    
+        <!-- PREMIUM CINEMA HERO -->
+         <section class="hero" id="home">
+    <div class="hero-overlay">
+        <div class="banner-content">
+            <p class="eyebrow">✦ COMPASS ORIGINALS · CINEMA · ENTERTAINMENT</p>
+
+            <h1>
+                YOUR NEXT
+                <span>GREAT MOVIE</span>
+                STARTS HERE.
+            </h1>
+
+            <p class="hero-description">
+                Discover incredible movies, explore exciting entertainment
+                stories, and find your next favourite film — all in one place.
+            </p>
+
+            <div class="banner-actions">
+                <a class="btn" href="#movies">▶ Explore Movies</a>
+                <a class="watch-button" href="#news">Discover Stories →</a>
+            </div>
+
+            <p class="banner-tagline">
+                YOUR WORLD. YOUR MOVIES. YOUR COMPASS.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ============ DYNAMIC FEATURED MOVIE ============ -->
+<section class="featured-trailer-section" id="featured-trailer">
+    <div class="featured-heading">
+        <p class="featured-eyebrow">✦ EDITOR'S PICK</p>
+        <h2>FEATURED <span>MOVIE</span></h2>
+        <p>Discover your next cinematic adventure.</p>
+    </div>
+
+    <div id="featuredMovie">
+        <p style="color:#aaa;">Loading featured movie...</p>
+    </div>
+</section>
+<!-- ========== END FEATURED MOVIE ========== -->
+
+        <!-- HIGHLIGHTS -->
+        <section class="section">
+            <div class="grid">
+
+                <article class="card">
+                    <p class="eyebrow">01 / CINEMA</p>
+                    <h3>Discover Movies</h3>
+                    <p>
+                        Browse the collection and find your next movie
+                        to watch.
+                    </p>
+                    <a href="#movies">Explore collection &#8594;</a>
+                </article>
+
+                <article class="card">
+                    <p class="eyebrow">02 / STORIES</p>
+                    <h3>Entertainment News</h3>
+                    <p>
+                        Explore movie discussions, reviews and
+                        entertainment updates.
+                    </p>
+                    <a href="#news">Read stories &#8594;</a>
+                </article>
+
+                <article class="card">
+                    <p class="eyebrow">03 / COMMUNITY</p>
+                    <h3>Join Compass</h3>
+                    <p>
+                        Create an account to get started with
+                        the Compass Movie Box community.
+                    </p>
+                    <a href="#login">Get started &#8594;</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- MOVIES -->
+            
+<!-- MOVIES -->
+<section id="movies" class="section dark">
+
+    <div class="section-head">
+        <div>
+            <p class="eyebrow">YOUR CINEMA DESTINATION</p>
+            <h2>Explore Movies</h2>
+            <p>Find something great to watch.</p>
+        </div>
+
+        <div class="movie-filters">
+            <input
+                id="search"
+                type="search"
+                placeholder="Search movies..."
+                aria-label="Search movies"
+            >
+
+        
+<select id="genreFilter" aria-label="Filter movies by genre">
+    <option value="">All genres</option>
+    <option value="Action">Action</option>
+    <option value="Comedy">Comedy</option>
+    <option value="Drama">Drama</option>
+    <option value="Horror">Horror</option>
+    <option value="Romance">Romance</option>
+    <option value="Science Fiction">Science Fiction</option>
+    <option value="Thriller">Thriller</option>
+    <option value="Animation">Animation</option>
+    <option value="Adventure">Adventure</option>
+    <option value="Documentary">Documentary</option>
+</select>
+        </div>
+    </div>
+    <!-- Movies are loaded here by app.js -->
+  
+<!-- TRENDING MOVIES -->
+<section class="discovery-section" id="trending-section">
+    <div class="discovery-heading">
+        <div>
+            <p class="discovery-label">POPULAR PICKS</p>
+            <h2>🔥 Trending <span>Movies</span></h2>
+            <p>Discover movies worth checking out.</p>
+        </div>
+    </div>
+    <div id="trendingMovies" class="discovery-grid">
+        <p>Loading trending movies...</p>
+    </div>
+</section>
+
+<!-- RECENTLY ADDED MOVIES -->
+<section class="discovery-section" id="recent-section">
+    <div class="discovery-heading">
+        <div>
+            <p class="discovery-label">FRESH FROM THE CINEMA</p>
+            <h2>🆕 Recently <span>Added</span></h2>
+            <p>Explore the latest additions to our collection.</p>
+        </div>
+    </div>
+    <div id="recentMovies" class="discovery-grid">
+        <p>Loading new movies...</p>
+    </div>
+</section>
+   
+    <div id="movieGrid" class="grid"></div>
+
+</section>
+
+<!-- NEWS AND BLOGS -->
+
+        <section id="news" class="section">
+
+            <p class="eyebrow">BEYOND THE SCREEN</p>
+            <h2>News, Reviews & Stories</h2>
+
+            <div class="grid">
+
+                <article class="card">
+                    <p class="eyebrow">REVIEWS</p>
+                    <h3>Movie Reviews</h3>
+                    <p>
+                        Discover opinions, recommendations and
+                        discussions about the world of cinema.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="eyebrow">LATEST UPDATES</p>
+                    <h3>Entertainment News</h3>
+                    <p>
+                        Keep up with entertainment headlines,
+                        actors and film releases.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="eyebrow">COMMUNITY</p>
+                    <h3>Coming Soon</h3>
+                    <p>
+                        This section is ready for future blog
+                        articles and entertainment stories.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- LOGIN AND REGISTRATION -->
+        <section id="login" class="section dark auth">
+
+            <p class="eyebrow">WELCOME TO COMPASS</p>
+            <h2>Your entertainment journey</h2>
+
+            <div class="auth-grid">
+
+                <form id="loginForm" class="card">
+                    <h3>Welcome Back</h3>
+                    <p>Sign in to your account.</p>
+
+                    <label for="loginEmail">Email address</label>
+                    <input
+                        id="loginEmail"
+                        name="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="loginPassword">Password</label>
+                    <input
+                        id="loginPassword"
+                        name="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button class="btn" type="submit">Login</button>
+                    <p id="loginMsg" role="status" aria-live="polite"></p>
+                </form>
+
+                <form id="registerForm" class="card">
+                    <h3>Create Your Account</h3>
+                    <p>Join the Compass Movie Box community.</p>
+
+                    <label for="registerName">Full name</label>
+                    <input
+                        id="registerName"
+                        name="name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <label for="registerEmail">Email address</label>
+                    <input
+                        id="registerEmail"
+                        name="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="registerPassword">Password</label>
+                    <input
+                        id="registerPassword"
+                        name="password"
+                        type="password"
+                        placeholder="At least 6 characters"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button class="btn" type="submit">Create Account</button>
+                    <p id="registerMsg" role="status" aria-live="polite"></p>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- ADMIN DASHBOARD -->
+        <section id="admin" class="section hidden">
+
+            <p class="eyebrow">CONTROL CENTRE</p>
+            <h2>Admin Dashboard</h2>
+
+            <div id="stats" class="stats"></div>
+
+            <div class="admin-grid">
+
+                <!-- KEEP EXISTING UPLOAD FIELD NAMES -->
+                <form
+                    id="movieForm"
+                    class="card"
+                    enctype="multipart/form-data"
+                >
+                    <h3>Publish a Movie</h3>
+                    <p>Add a movie to your collection.</p>
+
+                    <label for="movieTitle">Movie title</label>
+                    <input
+                        id="movieTitle"
+                        name="title"
+                        placeholder="Enter movie title"
+                        required
+                    >
+
+                    <label for="movieGenre">Genre</label>
+                    <input
+                        id="movieGenre"
+                        name="genre"
+                        placeholder="e.g. Action, Comedy, Drama"
+                    >
+
+                    <label for="movieYear">Release year</label>
+                    <input
+                        id="movieYear"
+                        name="year"
+                        type="number"
+                        placeholder="e.g. 2026"
+                    >
+
+                    <label for="movieDescription">Description</label>
+                    <textarea
+                        id="movieDescription"
+                        name="description"
+                        placeholder="Write a movie description..."
+                    ></textarea>
+
+                    <label for="moviePoster">Poster image</label>
+                    <input
+                        id="moviePoster"
+                        name="poster"
+                        type="file"
+                        accept="image/*"
+                    >
+
+                    <label for="movieVideo">Video file</label>
+                    <input
+                        id="movieVideo"
+                        name="video"
+                        type="file"
+                        accept="video/*"
+                    >
+
+                    <label for="posterUrl">Or poster URL</label>
+                    <input
+                        id="posterUrl"
+                        name="poster_url"
+                        type="url"
+                        placeholder="https://example.com/poster.jpg"
+                    >
+
+                    <label for="videoUrl">Or video URL</label>
+                    <input
+                        id="videoUrl"
+                        name="video_url"
+                        type="url"
+                        placeholder="https://example.com/video.mp4"
+                    >
+
+                    <button class="btn" type="submit">
+                        Publish Movie
+                    </button>
+
+                    <p id="movieMsg" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="card">
+                    <h3>Registered Users</h3>
+                    <div id="users"></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Compass Movie Box. All rights reserved.</p>
+        <p>Movies • Stories • Entertainment</p>
+    </footer>
+
+    <!-- Keep your existing JavaScript -->
+<script src="/app.js" defer></script>
+</body>
+</html>
